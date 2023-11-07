@@ -3,6 +3,7 @@ package initializers
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -13,7 +14,7 @@ type DatabaseInfo struct {
 	user     string
 	password string
 	dbname   string
-	port     int
+	port     string
 	sslmode  string
 	TimeZone string
 }
@@ -22,13 +23,24 @@ func (dbInfo *DatabaseInfo) toString() string {
 	return fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=%v TimeZone=%v", dbInfo.host, dbInfo.user, dbInfo.password, dbInfo.dbname, dbInfo.port, dbInfo.sslmode, dbInfo.TimeZone)
 }
 
-var db *gorm.DB
+var DB *gorm.DB
 
-func ConnectDB(dbInfo DatabaseInfo) {
+func ConnectDB() {
+	var dbInfo DatabaseInfo = DatabaseInfo{
+		host:     os.Getenv("DB_HOST"),
+		user:     os.Getenv("DB_USER"),
+		password: os.Getenv("DB_PASS"),
+		dbname:   os.Getenv("DB_NAME"),
+		port:     os.Getenv("DB_PORT"),
+		sslmode:  os.Getenv("DB_SSLMODE"),
+		TimeZone: os.Getenv("DB_TIMEZONE"),
+	}
 	var err error
 	dsn := dbInfo.toString()
-	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Cannot connect to database!")
+	} else {
+		log.Println("Database connection is ready!")
 	}
 }

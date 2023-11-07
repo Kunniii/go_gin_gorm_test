@@ -10,6 +10,7 @@ import (
 // this function is run before main()
 func init() {
 	initializers.LoadEnv()
+	initializers.ConnectDB()
 }
 
 func main() {
