@@ -1,0 +1,5 @@
+@host = http://localhost:3000
+
+###
+
+GET {{host}} HTTP/1.1

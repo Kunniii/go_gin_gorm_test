@@ -1,0 +1,4 @@
+vendor
+go_gin_gorm_test
+postgreSQL
+.env

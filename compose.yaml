@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgreSQL
+    environment:
+      POSTGRES_USER: golang
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sample_curd
+    volumes:
+      - ./postgreSQL:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
