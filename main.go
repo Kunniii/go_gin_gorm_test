@@ -9,6 +9,7 @@ import (
 
 // this function is run before main()
 func init() {
+	gin.SetMode(gin.ReleaseMode)
 	initializers.LoadEnv()
 	initializers.ConnectDB()
 }
