@@ -3,3 +3,54 @@
 ###
 
 GET {{host}}
+
+### Create new post
+// make sure to put the key as string!
+
+POST {{host}}/posts
+Content-Type: application/json
+
+{
+  "Title": "My Test Post",
+  "Body": "Hello, World!\nWelcome to my second post!"
+}
+
+### Get all posts
+
+GET {{host}}/posts
+
+### Get post by id
+
+GET  {{host}}/posts/1
+
+### Get post by wrong id
+
+GET  {{host}}/posts/123123
+
+### Update post
+
+PUT  {{host}}/posts/1
+Content-Type: application/json
+
+{
+  "title": "My new title",
+  "body": "My new content!"
+}
+
+### Update not found post
+
+PUT  {{host}}/posts/11231
+Content-Type: application/json
+
+{
+  "title": "My new title",
+  "body": "My new content!"
+}
+
+### Delete a post with id
+
+DELETE {{host}}/posts/1
+
+### Delete not found post id
+
+DELETE {{host}}/posts/123123
