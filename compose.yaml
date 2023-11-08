@@ -9,6 +9,6 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sample_curd
     volumes:
-      - ./postgreSQL:/var/lib/postgresql/data
+      - ./_postgreSQL:/var/lib/postgresql/data
     ports:
       - "5432:5432"
