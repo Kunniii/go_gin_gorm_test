@@ -5,8 +5,10 @@ import (
 	"log"
 	"os"
 
+	"github.com/Kunniii/go_gin_gorm_test/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 type DatabaseInfo struct {
@@ -37,10 +39,26 @@ func ConnectDB() {
 	}
 	var err error
 	dsn := dbInfo.toString()
-	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Silent),
+	})
 	if err != nil {
 		log.Fatal("Cannot connect to database!")
 	} else {
 		log.Println("Database connection is ready!")
+	}
+}
+
+func AutoMigrate() {
+	if err := DB.AutoMigrate(&models.Post{}); err != nil {
+		log.Fatal(err)
+	} else {
+		log.Println("Database migration successfully!")
+	}
+
+	if err := DB.AutoMigrate(&models.User{}); err != nil {
+		log.Fatal(err)
+	} else {
+		log.Println("Database migration successfully!")
 	}
 }
