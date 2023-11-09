@@ -1,4 +1,4 @@
-@host = http://localhost:3000
+@host = http://localhost:3000/posts
 
 ###
 
@@ -7,7 +7,7 @@ GET {{host}}
 ### Create new post
 // make sure to put the key as string!
 
-POST {{host}}/posts
+POST {{host}}
 Content-Type: application/json
 
 {
@@ -17,19 +17,19 @@ Content-Type: application/json
 
 ### Get all posts
 
-GET {{host}}/posts
+GET {{host}}
 
 ### Get post by id
 
-GET  {{host}}/posts/1
+GET  {{host}}/1
 
 ### Get post by wrong id
 
-GET  {{host}}/posts/123123
+GET  {{host}}/123123
 
 ### Update post
 
-PUT  {{host}}/posts/1
+PUT  {{host}}/1
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 
 ### Update not found post
 
-PUT  {{host}}/posts/11231
+PUT  {{host}}/11231
 Content-Type: application/json
 
 {
@@ -49,8 +49,8 @@ Content-Type: application/json
 
 ### Delete a post with id
 
-DELETE {{host}}/posts/1
+DELETE {{host}}/1
 
 ### Delete not found post id
 
-DELETE {{host}}/posts/123123
+DELETE {{host}}/123123
