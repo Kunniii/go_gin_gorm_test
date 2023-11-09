@@ -3,6 +3,7 @@
 ### Register new User
 
 POST {{host}}/register
+Accept: application/json
 Content-Type: application/json
 
 {
@@ -13,6 +14,7 @@ Content-Type: application/json
 ### Login with user
 
 POST {{host}}/login
+Accept: application/json
 Content-Type: application/json
 
 {
@@ -23,6 +25,7 @@ Content-Type: application/json
 ### Login with wrong email
 
 POST {{host}}/login
+Accept: application/json
 Content-Type: application/json
 
 {
@@ -33,9 +36,15 @@ Content-Type: application/json
 ### Login with wrong password
 
 POST {{host}}/login
+Accept: application/json
 Content-Type: application/json
 
 {
   "Email": "contact@codechovui.dev",
   "Password": "password@1234"
 }
+
+### Validate Token
+GET {{host}}/validate
+Accept: application/json
+Authorization: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnRhY3RAY29kZWNob3Z1aS5kZXYiLCJleHBpcmVzIjoxNzAyMTM5MDk2fQ.-oys2rdClAm-QZuZNSGU7mn0CCtTOXo7UN1EV7n388ARELeMBv1HtBOk6sPWZW4CwghBcHiqmCoN-IBLbTSoTg"
